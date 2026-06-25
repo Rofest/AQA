@@ -8,28 +8,26 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormPage {
 
-    private final SelenideElement firstNameInput = $("#firstName");
-    private final SelenideElement lastNameInput = $("#lastName");
-    private final SelenideElement emailInput = $("#userEmail");
-    private final SelenideElement phoneInput = $("#userNumber");
-    private final SelenideElement genderWrapper = $("#genterWrapper");
-    private final SelenideElement hobbiesWrapper = $("#hobbiesWrapper");
-    private final SelenideElement subjectsInput = $("#subjectsInput");
-    private final SelenideElement addressInput = $("#currentAddress");
-    private final SelenideElement stateSelect = $("#state");
-    private final SelenideElement citySelect = $("#city");
-    private final SelenideElement submitButton = $("#submit");
-    private final SelenideElement modalContent = $(".modal-content");
+  private final SelenideElement firstNameInput = $("#firstName"),
+      lastNameInput = $("#lastName"),
+      emailInput = $("#userEmail"),
+      phoneInput = $("#userNumber"),
+      genderWrapper = $("#genterWrapper"),
+      hobbiesWrapper = $("#hobbiesWrapper"),
+      subjectsInput = $("#subjectsInput"),
+      addressInput = $("#currentAddress"),
+      stateSelect = $("#state"),
+      citySelect = $("#city"),
+      submitButton = $("#submit"),
+      modalContent = $(".modal-content");
 
-    public PracticeFormPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
+    public PracticeFormPage closeAds() {
+      executeJavaScript(
+          "document.querySelectorAll('iframe, footer, #fixedban, #RightSide_Advertisement')" +
+              ".forEach(element => element.remove())"
+      );
 
-        executeJavaScript(
-                "document.querySelectorAll('iframe, footer, #fixedban, #RightSide_Advertisement')" +
-                        ".forEach(element => element.remove())"
-        );
-
-        return this;
+      return this;
     }
 
     public PracticeFormPage setFirstName(String firstName) {
@@ -89,7 +87,7 @@ public class PracticeFormPage {
         return this;
     }
 
-    public PracticeFormPage resultShouldHave(String... values) {
+    public PracticeFormPage verifyCorrectInfo(String... values) {
         for (String value : values) {
             modalContent.shouldHave(text(value));
         }
