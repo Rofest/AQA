@@ -1,24 +1,38 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '4.1.0'
 }
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
-    testImplementation("com.codeborne:selenide:7.16.2")
-    testImplementation 'net.datafaker:datafaker:2.4.2'}
+def allureAdapterVersion = '2.35.2'
 
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testImplementation 'com.codeborne:selenide:7.16.2'
+    testImplementation 'net.datafaker:datafaker:2.4.2'
+}
+
+allure {
+    version = '2.42.1'
+
+    adapter {
+        aspectjWeaver.set(true)
+        allureJavaVersion.set(allureAdapterVersion)
+
+        frameworks {
+            junit5
+        }
+    }
+}
 
 test {
     useJUnitPlatform()
-}
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+    jvmArgs '-Dfile.encoding=UTF-8'
 }
 
-tasks.withType(JavaExec).configureEach {
-    jvmArgs '-Dfile.encoding=UTF-8'
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }

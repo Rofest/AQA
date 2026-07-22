@@ -1,6 +1,7 @@
 package ru.webshop;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.webshop.page.CartPage;
 import ru.webshop.page.MainPage;
@@ -9,12 +10,22 @@ import ru.webshop.steps.AuthSteps;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Link;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.webshop.config.Config.WEB_SHOP_URL;
 
+@Epic("Интернет-магазин")
+@Feature("Корзина")
+@Story("Добавление товара в корзину")
 public class CartTest {
 
     private final AuthSteps authSteps = new AuthSteps();
@@ -25,6 +36,10 @@ public class CartTest {
     }
 
     @Test
+    @DisplayName("Успешное добавление товара в корзину")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("Rofest")
+    @Link(name = "задание Allure",url = "https://github.com/Rofest/AQA")
     void addItemToCartTest() {
         int productIndex = 0;
         String itemQuantity = "2";
