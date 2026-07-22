@@ -1,21 +1,17 @@
 package com.example.Task_1;
 
 public class Person {
+    private final String firstName;
+    private final String lastName;
+    private final int age;
 
-    public String firstName;
-    public String lastName;
-    public int age;
-
-    public void run() {
-        firstName = "Nikolay";
-        lastName = "Baskov";
-        age = 25;
-
-        introduce();
+    public Person(String firstName, String lastName, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
     }
 
     public void introduce() {
-        System.out.println(
-                "Привет, меня зовут " + firstName + " " + lastName + ". Мне " + age + " лет.");
+        System.out.println("Привет, меня зовут " + firstName + " " + lastName + ". Мне " + age + " лет.");
     }
 }

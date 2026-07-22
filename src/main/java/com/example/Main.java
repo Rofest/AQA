@@ -13,8 +13,8 @@ public class Main {
         System.out.println("Задача 1:");
         System.out.println("=========================================================");
 
-        Person person = new Person();
-        person.run();
+        Person person = new Person("Nikolay", "Baskov", 25);
+        person.introduce();
 
         System.out.println();
         System.out.println();

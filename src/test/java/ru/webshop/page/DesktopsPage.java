@@ -8,8 +8,8 @@ public class DesktopsPage {
 
     private final ElementsCollection productCards = $$("div.product-grid div");
 
-    public ProductPage openFirstProduct() {
-        productCards.get(0).click();
+    public ProductPage openProduct(int index) {
+        productCards.get(index).click();
         return new ProductPage();
     }
 }
