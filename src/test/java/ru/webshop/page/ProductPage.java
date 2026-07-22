@@ -1,5 +1,6 @@
 package ru.webshop.page;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
@@ -16,6 +17,7 @@ public class ProductPage {
     private final SelenideElement successNotification = $("div.bar-notification.success");
     private final SelenideElement cartQuantity = $("span.cart-qty");
     private final SelenideElement cartLink = $("a.ico-cart");
+    private final ElementsCollection processorOptions = $$("dl dd ul li");
 
     public String getItemName() {
         return itemName.getText();
@@ -26,9 +28,10 @@ public class ProductPage {
     }
 
     public ProductPage selectProcessor(int index) {
-        $$("dl dd ul li").get(0).$$("li input").get(index).click();
+        processorOptions.get(0).$$("li input").get(index).click();
         return this;
     }
+
 
     public ProductPage setQuantity(String quantity) {
         quantityInput.setValue(quantity);
@@ -37,9 +40,13 @@ public class ProductPage {
 
     public ProductPage addToCart() {
         addToCartButton.click();
+        return this;
+    }
+    public ProductPage successNotificationShouldBeVisible() {
         successNotification.shouldBe(visible);
         return this;
     }
+
 
     public ProductPage cartQuantityShouldBe(String quantity) {
         cartQuantity.shouldHave(text("(" + quantity + ")"));
