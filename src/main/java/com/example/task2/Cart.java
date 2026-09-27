@@ -1,4 +1,4 @@
-package com.example.Task_2;
+package com.example.task2;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,19 +8,20 @@ public class Cart {
     private Map<Product, Integer> products = new HashMap<>();
 
     public void addProduct(Product product, int quantity) {
-        if (products.containsKey(product)) {
-            int currentQuantity = products.get(product);
-            products.put(product, currentQuantity + quantity);
-        } else {
-            products.put(product, quantity);
+        if (quantity <= 0) {
+            throw new IllegalArgumentException(
+                    "Количество должно быть больше нуля"
+            );
         }
+
+        products.merge(product, quantity, Integer::sum);
     }
 
     public int getProductCount() {
         int totalCount = 0;
 
         for (int quantity : products.values()) {
-            totalCount = totalCount + quantity;
+            totalCount += quantity;
         }
 
         return totalCount;
@@ -33,7 +34,7 @@ public class Cart {
             Product product = entry.getKey();
             int quantity = entry.getValue();
 
-            totalPrice = totalPrice + product.getPrice() * quantity;
+            totalPrice += product.getPrice() * quantity;
         }
 
         return totalPrice;

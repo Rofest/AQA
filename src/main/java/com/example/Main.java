@@ -1,52 +1,50 @@
 package com.example;
 
-import com.example.Task_1.BudgetCalculator;
-import com.example.Task_1.BudgetPurchase;
-import com.example.Task_1.FruitsList;
-import com.example.Task_1.Person;
-import com.example.Task_2.*;
+import com.example.task1.Person;
+import com.example.task2.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        BankAccount bankAccount_1 = new BankAccount();
-        BankAccount bankAccount_2 = new BankAccount();
+        BankAccount bankAccount1 = new BankAccount("Nikita");
+        BankAccount bankAccount2 = new BankAccount("Nikolay");
 
-        bankAccount_1.setBalance(100);
-        System.out.println(bankAccount_1.getBalance());
+        bankAccount1.setBalance(100);
+        System.out.println(bankAccount1.getBalance());
 
-        bankAccount_2.setBalance(-500);
-        System.out.println(bankAccount_2.getBalance());
+        try {
+            bankAccount2.setBalance(-500);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
 
+        Person person1 = new Person("Nikolay", "Baskov", 25);
+        Person person2 = new Person("Nikita", "Pal", 43);
+        Person person3 = new Person("Masha", "Bob", 32);
 
-        Person person_1 = new Person("Nikolay", "Baskov", 25);
-        Person person_2 = new Person("Nikita", "Pal", 43);
-        Person person_3 = new Person("Masha", "Bob", 32);
+        person1.introduce();
+        person2.introduce();
+        person3.introduce();
 
-        person_1.introduce();
-        person_2.introduce();
-        person_3.introduce();
-
-        System.out.println(MathHelper.sum(34,54));
-        System.out.println(MathHelper.max(122,43));
+        System.out.println(MathHelper.sum(34, 54));
+        System.out.println(MathHelper.max(122, 43));
         System.out.println(MathHelper.isEven(34));
 
-        Visitor visitor_1 = new Visitor();
+        new Visitor();
         System.out.println(Visitor.getTotalVisitors());
 
-        Visitor visitor_2 = new Visitor();
+        new Visitor();
         System.out.println(Visitor.getTotalVisitors());
 
-        Visitor visitor_3 = new Visitor();
+        new Visitor();
         System.out.println(Visitor.getTotalVisitors());
 
-        Visitor visitor_4 = new Visitor();
+        new Visitor();
         System.out.println(Visitor.getTotalVisitors());
 
-        Visitor visitor_5 = new Visitor();
+        new Visitor();
         System.out.println(Visitor.getTotalVisitors());
-
 
         Product milk = new Product("Молоко", 100);
         Product bread = new Product("Хлеб", 80);
@@ -60,43 +58,5 @@ public class Main {
 
         System.out.println("Количество товаров: " + cart.getProductCount());
         System.out.println("Общая стоимость: " + cart.getTotalPrice());
-
-
-//        System.out.println("=========================================================");
-//        System.out.println("Задача 1:");
-//        System.out.println("=========================================================");
-//
-//        Person person = new Person("Nikolay", "Baskov", 25);
-//        person.introduce();
-//
-//        System.out.println();
-//        System.out.println();
-//
-//        System.out.println("=========================================================");
-//        System.out.println("Задача 2:");
-//        System.out.println("=========================================================");
-//
-//        FruitsList fruitsList = new FruitsList();
-//        fruitsList.run();
-//
-//        System.out.println();
-//        System.out.println();
-//
-//        System.out.println("=========================================================");
-//        System.out.println("Задача 3:");
-//        System.out.println("=========================================================");
-//
-//        BudgetCalculator budgetCalculator = new BudgetCalculator();
-//        budgetCalculator.run();
-//
-//        System.out.println();
-//        System.out.println();
-//
-//        System.out.println("=========================================================");
-//        System.out.println("Задача 4:");
-//        System.out.println("=========================================================");
-//
-//        BudgetPurchase budgetPurchase = new BudgetPurchase();
-//        budgetPurchase.run();
     }
 }
