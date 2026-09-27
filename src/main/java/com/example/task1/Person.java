@@ -1,4 +1,4 @@
-package com.example.Task_1;
+package com.example.task1;
 
 public class Person {
     private final String firstName;

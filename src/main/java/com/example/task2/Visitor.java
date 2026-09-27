@@ -1,4 +1,4 @@
-package com.example.Task_2;
+package com.example.task2;
 
 public class Visitor {
     private static int totalVisitors = 0;
